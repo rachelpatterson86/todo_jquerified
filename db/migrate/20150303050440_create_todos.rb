@@ -1,6 +1,6 @@
 class CreateTodos < ActiveRecord::Migration
   def change
-    create_table :create_todos do |t|
+    create_table :todos do |t|
       t.string :list
       t.boolean :task_complete
       t.timestamps null: false
