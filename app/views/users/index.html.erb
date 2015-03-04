@@ -1,0 +1,5 @@
+<h1>Hello, you!</h1>
+ <p><%="#{current_user.email}" %></p>
+<%= link_to 'See Todos', user_todos_path(current_user.id) %> |
+<%= link_to 'Create New Todos', user_todos_path(current_user.id), method: :post %>
+<%= link_to 'Sign Out', destroy_user_session_path %>
