@@ -1,0 +1,42 @@
+<h1>Your To Do List!</h1>
+
+<table style="width:100%">
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Complete</th>
+    </tr>
+  </thead>
+
+    <tbody>
+    <% @todo.each do |t| %>
+    <tr>
+      <td><%= t.list %></td>
+      <td><%= t.task_complete %></td>
+      <td><%= link_to 'Delete', user_todo_path(current_user, t),
+              method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+      <td><%= link_to 'Edit', edit_user_todo_path(@user, t) %></td>
+    </tr>
+    <% end %>
+    <tr>
+      <!--<td><%= link_to 'Add To Do', new_user_todo_path(@user, @todo) %></td>-->
+    </tr>
+  </tbody>
+</table>
+
+  <%= form_for([@user,@todo.new], remote: true) do |f| %>
+
+  <div class="field">
+    <%= f.label :list %><br>
+    <%= f.text_field :list %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <% end %>
+
+
+<br>
+<!--
+<%= console %>
+-->
