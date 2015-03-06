@@ -7,14 +7,13 @@ before_action :set_user
 
   def create
     @todo = Todo.new(todo_params)
-
     respond_to do |format|
       if @todo.save
         format.html { redirect_to user_todos_path(@todo), notice: 'todo was successfully created.' }
-        format.json { render :show, status: :created, location: @todo }
+        format.js { render :index }
       else
         format.html { render :new }
-        format.json { render json: @todo.errors, status: :unprocessable_entity }
+        format.js { render js: "alert('There are empty fields in the form!')"}
       end
     end
   end

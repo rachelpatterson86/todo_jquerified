@@ -19,10 +19,22 @@
     </tr>
     <% end %>
     <tr>
-      <td><%= link_to 'Add To Do', new_user_todo_path(@user, @todo) %></td>
+      <!--<td><%= link_to 'Add To Do', new_user_todo_path(@user, @todo) %></td>-->
     </tr>
   </tbody>
 </table>
+
+  <%= form_for([@user,@todo.new], remote: true) do |f| %>
+
+  <div class="field">
+    <%= f.label :list %><br>
+    <%= f.text_field :list %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <% end %>
+
 
 <br>
 <!--
